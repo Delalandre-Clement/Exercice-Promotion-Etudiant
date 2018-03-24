@@ -1,5 +1,7 @@
 package ecole;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Etudiant {
 	
@@ -71,5 +73,51 @@ public class Etudiant {
 
 		public void setNote(int note) {
 			this.note = note;
+		}
+		
+		public static Etudiant saisirEtudiant(Scanner scan) {
+			Etudiant etudiant1 = new Etudiant();
+			System.out.println("Veuillez saisir un nom :");
+			try {
+				String nom = scan.next();
+				etudiant1.setNom(nom);
+			} catch (InputMismatchException e) {
+				System.out.print("Erreur de saisie ! Valeur par défaut choisie.");
+				etudiant1.setNom("Dupont");
+			} 
+			System.out.println("Veuillez saisir son prenom :");
+			try {
+				String prenom = scan.next();
+				etudiant1.setPrenom(prenom);
+			} catch (InputMismatchException e) {
+				System.out.print("Erreur de saisie, Valeur par défaut choisie.");
+				etudiant1.setPrenom("Albert");				
+			} 
+			System.out.println("Veuillez saisir son age :");
+			try {
+				int age = scan.nextInt();
+				etudiant1.setAge(age);
+			} catch (InputMismatchException e) {
+				System.out.print("Erreur de saisie, Valeur par défaut choisie.");
+				etudiant1.setAge(0);
+			} 
+			System.out.println("Veuillez saisir son sexe :");
+			try {
+				String sexe_string = scan.next();
+				char sexe = sexe_string.charAt(0);
+				etudiant1.setSexe(sexe);
+			} catch (InputMismatchException e) {
+				System.out.print("Erreur de saisie ! Valeur par défaut choisie.");
+				etudiant1.setSexe('X');
+			}
+			System.out.println("Veuillez saisir sa note :");
+			try {
+				int note = scan.nextInt();
+				etudiant1.setNote(note);
+			} catch (InputMismatchException e) {
+				System.out.print("Erreur de saisie ! Valeur par défaut choisie.");
+				etudiant1.setNote(0);
+			}
+			return etudiant1;
 		}
 }
