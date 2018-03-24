@@ -1,5 +1,6 @@
 package ecole;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Etudiant {
 		private String nom;
 		private int age;
 		private char sexe;
-		private int note;
+		private String note[];
 		
 		/**
 		 * Constructeur avancé
@@ -27,11 +28,7 @@ public class Etudiant {
 
 
 		public Etudiant() {
-	        this.nom="nom";
-	        this.prenom="prenom";
-	        this.age=0;
-	        this.sexe='x';
-	        this.note=0;
+	        this("nom", "prenom",0,'x');
 		}
 
 
@@ -67,12 +64,22 @@ public class Etudiant {
 			this.sexe = sexe;
 		}
 		
-		public int getNote() {
-			return note;
+		public int[] getNote() {
+			int i=0;
+			int tableauNote[];
+			while( i <= this.note.length) {
+				tableauNote[i]=this.note[i];
+				i++;
+			}
+			return tableauNote[];
 		}
 
-		public void setNote(int note) {
-			this.note = note;
+		public void setNote(String[] note) {
+			int i=0;
+			while( i <= note.length) {
+				this.note[i]=note[i];
+				i++;
+			}
 		}
 		
 		public static Etudiant saisirEtudiant(Scanner scan) {
@@ -112,11 +119,11 @@ public class Etudiant {
 			}
 			System.out.println("Veuillez saisir sa note :");
 			try {
-				int note = scan.nextInt();
-				etudiant1.setNote(note);
+				String chaine = scan.next();
+				String note[] = chaine.split("\\|");
+				etudiant1.setNote(note[]);
 			} catch (InputMismatchException e) {
 				System.out.print("Erreur de saisie ! Valeur par défaut choisie.");
-				etudiant1.setNote(0);
 			}
 			return etudiant1;
 		}

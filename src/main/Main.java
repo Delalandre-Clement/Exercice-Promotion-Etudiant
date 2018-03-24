@@ -30,9 +30,8 @@ public class Main {
 			numReponse=scan.nextInt();
 
 			switch(numReponse) {
-			case CHOIX_CREATION_PROMO:{
+			case CHOIX_CREATION_PROMO:
 				promotion1 = Promotion.creationPromotion(scan);
-			}
 			break;
 			case CHOIX_CREATION_ETUDIANT:
 				Etudiant etudiant1 = Etudiant.saisirEtudiant(scan);
@@ -42,6 +41,7 @@ public class Main {
 				Note.afficherNote(scan, promotion1);
 				break;
 			case CHOIX_CALCUL_MOYENNE:
+				
 				break;
 			case CHOIX_QUITTER:
 				System.out.println("Merci pour votre passage, A bientot !");

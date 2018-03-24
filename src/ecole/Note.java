@@ -1,25 +1,20 @@
 package ecole;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Note {
-	private ArrayList<Note> alNote;
+	int note;
 	
 	public Note() {
-		this.alNote = new ArrayList<Note>();
+		this.note=0;
 	}
 	
-	public ArrayList<Note> getAlNote() {
-		return alNote;
+	public int getAlNote() {
+		return note;
 	}
 	
-	public void setAlNote(ArrayList<Note> alNote) {
-		this.alNote = alNote;
-	}
-	
-	public void addNote(Note note) {
-		this.alNote.add(note);
+	public void setAlNote(int note) {
+		this.note=note;
 	}
 
 	public static void afficherNote(Scanner scan, Promotion promotion1) {
@@ -32,4 +27,7 @@ public class Note {
 		
 	}
 	
+	public void afficherMoyenneNotes() {
+		
+	}
 }
