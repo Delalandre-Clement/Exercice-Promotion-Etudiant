@@ -10,7 +10,7 @@ public class Etudiant {
 		private String nom;
 		private int age;
 		private char sexe;
-		private String note[];
+		private ArrayList<Float> note;
 		
 		/**
 		 * Constructeur avancé
@@ -24,6 +24,7 @@ public class Etudiant {
 			this.prenom=prenom_etu;
 			this.age=age_etu;
 			this.sexe=sexe_etu;
+			ArrayList<Float> note = new ArrayList<Float>();
 		}
 
 
@@ -63,67 +64,106 @@ public class Etudiant {
 		public void setSexe(char sexe) {
 			this.sexe = sexe;
 		}
-		
-		public int[] getNote() {
+
+		public float[] getNotes() {
 			int i=0;
-			int tableauNote[];
-			while( i <= this.note.length) {
-				tableauNote[i]=this.note[i];
+			float[] tabNote= {};
+			while( i <= this.note.size()) {
+				tabNote[i] = note.get(i);
 				i++;
 			}
-			return tableauNote[];
+			return tabNote;
+		}
+		
+		public Float getNote(int index) {
+			return note.get(index);
 		}
 
-		public void setNote(String[] note) {
+		public float getMoyenne() {
 			int i=0;
-			while( i <= note.length) {
-				this.note[i]=note[i];
+			float additionNote=0;
+			while( i <= this.note.size()) {
+				additionNote = additionNote + note.get(i);
 				i++;
 			}
+			return (additionNote/this.note.size());
+		}
+
+		public void setNote(ArrayList<Float> listeNotes1) {
+				note = listeNotes1;
+		} 
+		
+		public int getTailleNotes() {
+			return note.size();
 		}
 		
+		/**
+		 * Création d'un étudiant
+		 * @param scan
+		 * @return
+		 */
 		public static Etudiant saisirEtudiant(Scanner scan) {
 			Etudiant etudiant1 = new Etudiant();
-			System.out.println("Veuillez saisir un nom :");
-			try {
-				String nom = scan.next();
-				etudiant1.setNom(nom);
-			} catch (InputMismatchException e) {
-				System.out.print("Erreur de saisie ! Valeur par défaut choisie.");
-				etudiant1.setNom("Dupont");
-			} 
-			System.out.println("Veuillez saisir son prenom :");
-			try {
-				String prenom = scan.next();
-				etudiant1.setPrenom(prenom);
-			} catch (InputMismatchException e) {
-				System.out.print("Erreur de saisie, Valeur par défaut choisie.");
-				etudiant1.setPrenom("Albert");				
-			} 
-			System.out.println("Veuillez saisir son age :");
-			try {
-				int age = scan.nextInt();
-				etudiant1.setAge(age);
-			} catch (InputMismatchException e) {
-				System.out.print("Erreur de saisie, Valeur par défaut choisie.");
-				etudiant1.setAge(0);
-			} 
-			System.out.println("Veuillez saisir son sexe :");
-			try {
-				String sexe_string = scan.next();
-				char sexe = sexe_string.charAt(0);
-				etudiant1.setSexe(sexe);
-			} catch (InputMismatchException e) {
-				System.out.print("Erreur de saisie ! Valeur par défaut choisie.");
-				etudiant1.setSexe('X');
+			String nom = null;
+			while (nom == null ) {
+				try {
+					System.out.println("Veuillez saisir un nom :");
+					nom = scan.next();
+					etudiant1.setNom(nom);
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				} 
 			}
-			System.out.println("Veuillez saisir sa note :");
-			try {
-				String chaine = scan.next();
-				String note[] = chaine.split("\\|");
-				etudiant1.setNote(note[]);
-			} catch (InputMismatchException e) {
-				System.out.print("Erreur de saisie ! Valeur par défaut choisie.");
+
+			String prenom = null;
+			while (prenom == null ) {
+				try {
+					System.out.println("Veuillez saisir son prenom :");
+					prenom = scan.next();
+					etudiant1.setPrenom(prenom);
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				}
+			}
+			
+			int age =0;
+			while (age == 0 ) {
+				try {
+					System.out.println("Veuillez saisir son age :");
+					age = scan.nextInt();
+					etudiant1.setAge(age);
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				} 
+			}
+			
+			String sexe_string = null;
+			while (sexe_string == null ) {
+				try {
+					System.out.println("Veuillez saisir son sexe :");
+					sexe_string = scan.next();
+					char sexe = sexe_string.charAt(0);
+					etudiant1.setSexe(sexe);
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				}
+			}
+			
+			String listeNotes = null;
+			while (listeNotes == null ) {
+				try {
+					System.out.println("Veuillez saisir ses notes :");
+					listeNotes= scan.next();
+					ArrayList<Float> listeNotes1 = new ArrayList<Float>();
+					float note = 0;
+					for(String x : listeNotes.split("\\|")) {
+						note = Float.valueOf(x.trim()).floatValue(); 
+						listeNotes1.add(note);
+					}
+					etudiant1.setNote(listeNotes1);
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				}
 			}
 			return etudiant1;
 		}

@@ -62,6 +62,11 @@ public class Promotion {
 		return alEtudiants.size();
 	}
 	
+	/**
+	 * Création d'une promotion
+	 * @param scan
+	 * @return
+	 */
 	public static Promotion creationPromotion(Scanner scan) {
 		Promotion promotion1 = new Promotion();
 		String nom_Prom = null;
@@ -85,5 +90,44 @@ public class Promotion {
 			} 
 		}
 		return promotion1;
+	}
+
+	/**
+	 * Recherche et supprime un étudiant de la promotion
+	 * @param scan
+	 * @param promo
+	 */
+	public static void supprimeEtudiant(Scanner scan, Promotion promo) {
+		int etudiantSuppr = 0;
+		String nom = null;
+		while (nom == null ) {
+			try {
+				System.out.println("Veuillez saisir un nom :");
+				nom = scan.next();
+			} catch (InputMismatchException e) {
+				System.out.print("Erreur de saisie !");
+			} 
+		}
+
+		String prenom = null;
+		while (prenom == null ) {
+			try {
+				System.out.println("Veuillez saisir son prenom :");
+				prenom = scan.next();
+			} catch (InputMismatchException e) {
+				System.out.print("Erreur de saisie !");
+			}
+		}
+		
+		for(Etudiant etu : promo.alEtudiants) {
+			if(etu.getPrenom()==prenom && etu.getNom() == nom) {
+				 promo.alEtudiants.remove(etu);
+				 System.out.println("Etudiant supprimé.");
+				 etudiantSuppr =1;
+			}
+		}
+		if(etudiantSuppr == 0) {
+			System.out.println("Aucun etudiant trouvé à ce nom.");
+		}
 	}
 }

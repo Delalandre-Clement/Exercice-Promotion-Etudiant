@@ -11,7 +11,8 @@ public class Main {
 	public static final int CHOIX_CREATION_ETUDIANT = 2;
 	public static final int CHOIX_AFFICHER_NOTES = 3;
 	public static final int CHOIX_CALCUL_MOYENNE = 4;
-	public static final int CHOIX_QUITTER = 5;
+	public static final int SUPPRIMER_ETUDIANT = 5;
+	public static final int CHOIX_QUITTER = 6;
 	/**
 	 * Menu principal / Accueil du projet
 	 * @param args
@@ -24,8 +25,8 @@ public class Main {
 			System.out.println("Menu principal :");
 			System.out.println("1- Creation Promotion");
 			System.out.println("2- Creation Etudiant");
-			System.out.println("3- Afficher liste étudiant");
-			System.out.println("4- Afficher notes étudiants");
+			System.out.println("3- Afficher Notes étudiants");
+			System.out.println("4- Supprimer étudiant");
 			System.out.println("5- Quitter");
 			numReponse=scan.nextInt();
 
@@ -41,7 +42,9 @@ public class Main {
 				Note.afficherNote(scan, promotion1);
 				break;
 			case CHOIX_CALCUL_MOYENNE:
-				
+				break;
+			case SUPPRIMER_ETUDIANT:
+				Promotion.supprimeEtudiant(scan, promotion1);
 				break;
 			case CHOIX_QUITTER:
 				System.out.println("Merci pour votre passage, A bientot !");
