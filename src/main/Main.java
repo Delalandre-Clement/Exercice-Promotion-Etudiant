@@ -21,13 +21,14 @@ public class Main {
 		int numReponse=0;
 		Promotion promotion1 = new Promotion();
 		Scanner scan = new Scanner(System.in);
-		while(numReponse!=5) {
+		while(numReponse!=CHOIX_QUITTER) {
 			System.out.println("Menu principal :");
 			System.out.println("1- Creation Promotion");
 			System.out.println("2- Creation Etudiant");
 			System.out.println("3- Afficher Notes étudiants");
-			System.out.println("4- Supprimer étudiant");
-			System.out.println("5- Quitter");
+			System.out.println("4- Calcul moyenne étudiants");
+			System.out.println("5- Supprimer étudiant");
+			System.out.println("6- Quitter");
 			numReponse=scan.nextInt();
 
 			switch(numReponse) {
@@ -42,6 +43,7 @@ public class Main {
 				Note.afficherNote(scan, promotion1);
 				break;
 			case CHOIX_CALCUL_MOYENNE:
+				Note.calculMoyenne(scan, promotion1);
 				break;
 			case SUPPRIMER_ETUDIANT:
 				Promotion.supprimeEtudiant(scan, promotion1);

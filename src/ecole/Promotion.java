@@ -120,7 +120,7 @@ public class Promotion {
 		}
 		
 		for(Etudiant etu : promo.alEtudiants) {
-			if(etu.getPrenom()==prenom && etu.getNom() == nom) {
+			if(etu.getPrenom() == prenom && etu.getNom() == nom) {
 				 promo.alEtudiants.remove(etu);
 				 System.out.println("Etudiant supprimé.");
 				 etudiantSuppr =1;
