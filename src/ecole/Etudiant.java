@@ -134,6 +134,42 @@ public class Etudiant {
 		}
 		
 		/**
+		 * Saisie de l'age d'un etudiant
+		 * @param scan
+		 * @return
+		 */
+		public static int saisieAge(Scanner scan) {
+			int age =0;
+			while (age == 0 ) {
+				try {
+					System.out.println("Veuillez saisir son age :");
+					age = scan.nextInt();
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				} 
+			}
+			return age;
+		}
+		
+		/**
+		 * Saisie du sexe d'un Etudiant
+		 * @param scan
+		 * @return
+		 */
+		public static char saisieSexe(Scanner scan) {
+			String sexe_string = null;
+			while (sexe_string == null ) {
+				try {
+					System.out.println("Veuillez saisir son sexe :");
+					sexe_string = scan.next();
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				}
+			}
+			return sexe_string.charAt(0);
+		}
+		
+		/**
 		 * Création d'un étudiant
 		 * @param scan
 		 * @return
@@ -146,28 +182,11 @@ public class Etudiant {
 			String prenom = saisiePrenom(scan);
 			etudiant1.setPrenom(prenom);
 			
-			int age =0;
-			while (age == 0 ) {
-				try {
-					System.out.println("Veuillez saisir son age :");
-					age = scan.nextInt();
-					etudiant1.setAge(age);
-				} catch (InputMismatchException e) {
-					System.out.print("Erreur de saisie !");
-				} 
-			}
+			int age = saisieAge(scan);
+			etudiant1.setAge(age);
 			
-			String sexe_string = null;
-			while (sexe_string == null ) {
-				try {
-					System.out.println("Veuillez saisir son sexe :");
-					sexe_string = scan.next();
-					char sexe = sexe_string.charAt(0);
-					etudiant1.setSexe(sexe);
-				} catch (InputMismatchException e) {
-					System.out.print("Erreur de saisie !");
-				}
-			}
+			char sexe = saisieSexe(scan);
+			etudiant1.setSexe(sexe);
 			
 			String listeNotes = null;
 			while (listeNotes == null ) {
