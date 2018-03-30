@@ -99,25 +99,8 @@ public class Promotion {
 	 */
 	public static void supprimeEtudiant(Scanner scan, Promotion promo) {
 		int etudiantSuppr = 0;
-		String nom = null;
-		while (nom == null ) {
-			try {
-				System.out.println("Veuillez saisir un nom :");
-				nom = scan.next();
-			} catch (InputMismatchException e) {
-				System.out.print("Erreur de saisie !");
-			} 
-		}
-
-		String prenom = null;
-		while (prenom == null ) {
-			try {
-				System.out.println("Veuillez saisir son prenom :");
-				prenom = scan.next();
-			} catch (InputMismatchException e) {
-				System.out.print("Erreur de saisie !");
-			}
-		}
+		String nom = Etudiant.saisieNom(scan);
+		String prenom = Etudiant.saisiePrenom(scan);
 		
 		for(Etudiant etu : promo.alEtudiants) {
 			if(etu.getPrenom() == prenom && etu.getNom() == nom) {

@@ -98,33 +98,53 @@ public class Etudiant {
 		}
 		
 		/**
+		 * Saisie d'un nom d'étudiant
+		 * @param scan
+		 * @return
+		 */
+		public static String saisieNom(Scanner scan) {
+			String nom = null;
+			while (nom == null ) {
+				try {
+					System.out.println("Veuillez saisir un nom :");
+					nom = scan.next();
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				} 
+			}
+			return nom;
+		}
+		
+		/**
+		 * Saisie d'un prenom d'étudiant
+		 * @param scan
+		 * @return
+		 */
+		public static String saisiePrenom(Scanner scan) {
+			String prenom = null;
+			while (prenom == null ) {
+				try {
+					System.out.println("Veuillez saisir un prenom :");
+					prenom = scan.next();
+				} catch (InputMismatchException e) {
+					System.out.print("Erreur de saisie !");
+				}
+			}
+			return prenom;
+		}
+		
+		/**
 		 * Création d'un étudiant
 		 * @param scan
 		 * @return
 		 */
 		public static Etudiant saisirEtudiant(Scanner scan) {
 			Etudiant etudiant1 = new Etudiant();
-			String nom = null;
-			while (nom == null ) {
-				try {
-					System.out.println("Veuillez saisir un nom :");
-					nom = scan.next();
-					etudiant1.setNom(nom);
-				} catch (InputMismatchException e) {
-					System.out.print("Erreur de saisie !");
-				} 
-			}
+			String nom = saisieNom(scan);
+			etudiant1.setNom(nom);
 
-			String prenom = null;
-			while (prenom == null ) {
-				try {
-					System.out.println("Veuillez saisir son prenom :");
-					prenom = scan.next();
-					etudiant1.setPrenom(prenom);
-				} catch (InputMismatchException e) {
-					System.out.print("Erreur de saisie !");
-				}
-			}
+			String prenom = saisiePrenom(scan);
+			etudiant1.setPrenom(prenom);
 			
 			int age =0;
 			while (age == 0 ) {
