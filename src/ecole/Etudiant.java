@@ -24,7 +24,7 @@ public class Etudiant {
 			this.prenom=prenom_etu;
 			this.age=age_etu;
 			this.sexe=sexe_etu;
-			ArrayList<Float> note = new ArrayList<Float>();
+			note = new ArrayList<Float>();
 		}
 
 
